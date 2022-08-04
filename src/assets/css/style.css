@@ -1,10 +1,10 @@
 @import url(normalize.css);
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,600;1,200&display=swap');
 
 html,
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
@@ -62,11 +62,10 @@ main {
     margin-top: -180px;
     z-index: 50;
 }
-
 .add-item {
     background-color:rgb(56, 56, 58);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .add-item label {
@@ -75,9 +74,9 @@ main {
 }
 
 .add-item button > img{
-    height: 20px;
-    width: 20px;
-    border: 1px solid white;
+    height: 23px;
+    width: 23px;
+    border: 1px solid rgba(255, 255, 255, 0.507);
     border-radius: 2px;
     display: flex;
     align-items: center;
@@ -95,8 +94,7 @@ main {
 
 .items {
     background-color:rgb(56, 56, 58);
-    padding: 10px;
-    border-radius: 5px;
+    border-radius: 2px;
     height: 100%;
     margin-top: 25px;
 }
@@ -116,6 +114,8 @@ main {
     justify-content: space-between;
     font-size: 14px;
     color: rgb(80, 78, 85);
+    padding: 10px;
+    border-top: 1px solid rgb(80, 78, 85);
 }
 
 .items__footer ul {
@@ -124,7 +124,7 @@ main {
 }
 
 .items__footer ul > li:hover{
-    color: rgb(70, 121, 230);
+    color: rgb(51, 108, 230);
 }
 
 .items__footer ul > * + * {
@@ -132,57 +132,91 @@ main {
 }
 
 .items__footer h3 > a:hover{
-    color: rgb(70, 121, 230);
+    color: rgb(51, 108, 230);
 }
 
 .items__footer h3 > span {
     padding-right: 10px;
 }
 
+/* Checkbox section*/
 
+.items__list {
+    display: flex;
+    flex-direction: column;
+}
 
+.checkbox__container {
+    z-index: 1;
+    padding: 10px;
+    border-bottom: 1px solid rgb(80, 78, 85);
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
 
+.checkbox__container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
 
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 23px;
+    width: 23px;
+    background-color: rgb(56, 56, 58);
+    margin: 10px 25px 0px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.507);
+}
 
+.checkbox__container:hover input ~ .checkmark {
+    background-color: rgb(56, 56, 58);
+}
 
+.checkbox__container input:checked ~ .checkmark {
+    background-color: rgb(56, 56, 58);
+}
 
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
 
+.checkbox__container input:checked ~ .checkmark:after {
+    display: block;
+}
 
+.checkbox__container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid rgba(255, 255, 255, 0.733);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.checkbox__container div {
+    margin-left: 40px;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgb(224, 223, 223);
+    letter-spacing: 0.5px
+}
 
 
 /* Footer */
 
 .footer__quote {
+    z-index: 51;
     text-align: center;
     font-size: 14px;
     letter-spacing: 2px;
