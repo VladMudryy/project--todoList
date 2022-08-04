@@ -21,10 +21,13 @@
             <div class="container">
                 <div class="main__content">
                     <section class="card add-item">
-                        <input type="text" id="card-add" name="new-card" placeholder="Create new todo..">
-                        <button>
-                            <img src="assets/img/icons/plus_white.svg" alt="add-card">
-                        </button>
+                        <label>
+                            <button>
+                                <img src="assets/img/icons/plus_white.svg" alt="add-card">
+                            </button>
+                            <input class="add-item__input" type="text" id="card-add" name="new-card" placeholder="Create new todo..">
+                        </label>
+                        
                     </section>
                     <section class="card items">
                         <div class="items__content">
@@ -32,11 +35,11 @@
                             <div class="items__footer">
                                 <h3><span>0</span>items</h3>
                                 <ul>
-                                    <li>All</li>
-                                    <li>Active</li>
-                                    <li>Completed</li>
+                                    <li><a id="all" href="#">All</a></li>
+                                    <li><a id="active" href="#">Active</a></li>
+                                    <li><a id="completed" href="#">Completed</a></li>
                                 </ul>
-                                <h3>Clear Completed</h3>
+                                <h3><a href="#">Clear Completed</a></h3>
                             </div>
                         </div>
                     </section>
