@@ -136,6 +136,10 @@ main {
     flex: 1 1 auto;
 }
 
+.item img {
+    cursor: pointer;
+}
+
 .items__footer {
     display: flex;
     justify-content: space-between;
@@ -151,7 +155,7 @@ main {
 }
 
 .items__footer ul > li:hover{
-    color: rgb(59, 114, 235);
+    color: rgb(77, 131, 248);
 }
 
 .items__footer ul > * + * {
@@ -159,7 +163,7 @@ main {
 }
 
 .items__footer h3 > a:hover{
-    color: rgb(59, 114, 235);
+    color: rgb(77, 131, 248);
 }
 
 .items__footer h3 > span {
