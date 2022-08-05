@@ -10,6 +10,7 @@ body {
     font-size: 20px;
     font-weight: 400;
     color: rgba(243, 238, 247, 0.9);
+    scrollbar-color: rgb(56, 56, 58);
 }
 
 .wrapper {
@@ -26,6 +27,19 @@ main {
 .container {
     width: 700px;
     margin: 0 auto;
+}
+/* Scroll */
+
+.items__list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.items__list::-webkit-scrollbar-track {
+    background-color: rgba(155, 151, 151, 0.507);
+}
+  
+.items__list::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.918);
 }
 
 /* Header */
@@ -103,9 +117,22 @@ main {
     display: flex;
     flex-direction: column;
     min-height: 350px;
+    max-height: 350px;
+    overflow: hidden;
 }
 
 .items__list {
+    flex: 1 1 auto;
+}
+
+.item {
+    display: flex;
+    z-index: 1;
+    padding: 10px;
+    border-bottom: 1px solid rgb(80, 78, 85);
+}
+
+.item label {
     flex: 1 1 auto;
 }
 
@@ -113,7 +140,7 @@ main {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: rgb(80, 78, 85);
+    color: rgb(103, 101, 109);
     padding: 10px;
     border-top: 1px solid rgb(80, 78, 85);
 }
@@ -124,7 +151,7 @@ main {
 }
 
 .items__footer ul > li:hover{
-    color: rgb(51, 108, 230);
+    color: rgb(59, 114, 235);
 }
 
 .items__footer ul > * + * {
@@ -132,7 +159,7 @@ main {
 }
 
 .items__footer h3 > a:hover{
-    color: rgb(51, 108, 230);
+    color: rgb(59, 114, 235);
 }
 
 .items__footer h3 > span {
@@ -144,12 +171,11 @@ main {
 .items__list {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+    max-height: 60%;
 }
 
 .checkbox__container {
-    z-index: 1;
-    padding: 10px;
-    border-bottom: 1px solid rgb(80, 78, 85);
     position: relative;
     cursor: pointer;
     user-select: none;
@@ -170,7 +196,6 @@ main {
     height: 23px;
     width: 23px;
     background-color: rgb(56, 56, 58);
-    margin: 10px 25px 0px 10px;
     border: 1px solid rgba(255, 255, 255, 0.507);
 }
 
@@ -212,7 +237,6 @@ main {
     letter-spacing: 0.5px
 }
 
-
 /* Footer */
 
 .footer__quote {
@@ -224,3 +248,4 @@ main {
     margin-bottom: 30px;
     color: rgb(80, 78, 85);
 }
+
