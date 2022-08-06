@@ -5,7 +5,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const input = document.querySelector('.add-item__input'),
           inputSection = document.querySelector('.add-item'),
-          listParent = document.querySelector('.items__list');
+          listParent = document.querySelector('.items__list'),
+          itemQty = document.querySelector('.items__footer span'),
+          itemsFilter = document.querySelectorAll('.items__footer li'),
+          itemsClear = document.querySelector('.items__clear');
           
     class TodoItem {
         constructor(text, className, classParent, isComplete = false) {
@@ -22,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 <label class="checkbox__container">
                     <input class="checkbox__input" type="checkbox">
                     <span class="checkmark"></span>
-                    <div>${this.text}</div>   
+                    <div class="checkbox__text">${this.text}</div>   
                 </label>
                 <img class="checkbox__img" src="./assets/img/icons/close_white.png" alt="close">
             `;
@@ -45,6 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
         arrayOfTodos.forEach(item => {
             item.render();
         });
+        itemQty.textContent = arrayOfTodos.length;
     }
 
     input.addEventListener('keypress', event => {
@@ -72,20 +76,75 @@ window.addEventListener('DOMContentLoaded', () => {
         if (event.target && event.target.classList.contains('checkbox__img')) {
             removeTodo([...document.querySelectorAll('.item')].indexOf(event.target));
             event.target.parentElement.remove();
+            itemQty.textContent = arrayOfTodos.length;
         }
     });
     
     // Completed Todo
 
+    function isCheckedTrue(index) {
+        arrayOfTodos[index].isComplete = true;
+        const todoBlock = document.querySelectorAll('.item');
+        todoBlock[index].firstElementChild.lastElementChild.classList.add('text-line');
+        todoBlock[index].classList.add('item-checked');        
+    }
+
+    function isCheckedFalse(index) {
+        arrayOfTodos[index].isComplete = false;
+        const todoBlock = document.querySelectorAll('.item');
+        todoBlock[index].firstElementChild.lastElementChild.classList.remove('text-line');
+        todoBlock[index].classList.remove('item-checked'); 
+    }
+
     listParent.addEventListener('change', event => {
         if (event.target && event.target.classList.contains('checkbox__input')) {
             if (event.target.checked === true) {
-                event.target.parentElement.lastChild.style.textDecoration = 'line-through';
+                isCheckedTrue([...document.querySelectorAll('.item')].indexOf(event.target.parentElement.parentElement));
+            } else if (event.target.checked === false) {
+                isCheckedFalse([...document.querySelectorAll('.item')].indexOf(event.target.parentElement.parentElement));
             }
         }
     });
 
+    // items filter (all/active/cpmpleted)
 
+    itemsFilter[0].classList.add('on');
+
+    itemsFilter.forEach((item, i) => {
+        item.addEventListener('click', event => {
+            itemsFilter.forEach(item => {
+                item.classList.remove('on');
+            });
+            item.classList.add('on');
+            if (event.target.id === 'all') {
+                document.querySelectorAll('.item').forEach(item => {
+                    console.log(item);
+                    item.classList.remove('hide');
+                });
+            } else if (event.target.id === 'active') {
+                document.querySelectorAll('.item').forEach(item => {
+                    item.classList.remove('hide');
+                    if (item.classList.contains('item-checked') !== false) {
+                        item.classList.add('hide');
+                    }
+                });
+            } else if (event.target.id === 'completed') {
+                document.querySelectorAll('.item').forEach(item => {
+                    item.classList.remove('hide');
+                    if (item.classList.contains('item-checked') !== true) {
+                        item.classList.add('hide');
+                    }
+                });
+            }
+        });
+    });
+
+    // Clear all
+
+    itemsClear.addEventListener('click', event => {
+        listParent.innerHTML = '';
+        arrayOfTodos.splice(0, arrayOfTodos.length);
+    });
 
 
 
