@@ -134,6 +134,7 @@ main {
 
 .item label {
     flex: 1 1 auto;
+    overflow: hidden;
 }
 
 .item img {
