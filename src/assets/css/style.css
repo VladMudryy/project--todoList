@@ -51,8 +51,13 @@ main {
 }
 
 @media (max-width: 452px) {
+    body {
+        font-size: 14px;
+    }
+
     .container {
         width: 330px;
+        
     }
 }
 
@@ -142,19 +147,7 @@ main {
 }
 
 .main__content {
-    height: 565px;
-}
-
-@media (max-width: 768px) {
-    .main__content {
-        height: 603px;
-    }    
-}
-
-@media (max-width: 550px) {
-    .main__content {
-        height: 630px;
-    }    
+    height: 100%;
 }
 
 .add-item {
@@ -207,19 +200,7 @@ main {
 }
 
 .items__content {
-    height: 880px;
-}
-
-@media (max-width: 768px) {
-    .items__content {
-        height: 950px;
-    }   
-}
-
-@media (max-width: 550px) {
-    .items__content {
-        height: 1000px;
-    }    
+    height: 100%;
 }
 
 .items__list {
