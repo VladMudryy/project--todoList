@@ -39,8 +39,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Load todos from localStorage
 
-    const arrayOfTodos = [],
-          arrayOfLocal = [];
+    const arrayOfTodos = [], // for storage todos
+          arrayOfLocal = []; // additional for transform localStorage
 
     if (JSON.parse(localStorage.getItem('Todo-list'))) {
         JSON.parse(localStorage.getItem('Todo-list')).forEach(item => {
@@ -66,9 +66,8 @@ window.addEventListener('DOMContentLoaded', () => {
         arrayOfTodos.forEach(item => {
             item.render();
         });
-        itemQty.textContent = arrayOfTodos.length;
-        localStorage.setItem('Todo-list', JSON.stringify(arrayOfTodos)); 
-        
+        itemQty.textContent = arrayOfTodos.length; // updating counter
+        localStorage.setItem('Todo-list', JSON.stringify(arrayOfTodos));        
         const allItems = document.querySelectorAll('.item');
         allItems.forEach(item => {
         if (item.classList.contains('item-checked')) {
@@ -78,7 +77,7 @@ window.addEventListener('DOMContentLoaded', () => {
         itemsFilter.forEach(item => {
             item.classList.remove('on');
         });
-        itemsFilter[0].classList.add('on');
+        itemsFilter[0].classList.add('on'); // if user add new todo, switch filter to 'All'
     });
     }
 
@@ -110,7 +109,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (target && target.classList.contains('checkbox__img')) {
             removeTodo([...document.querySelectorAll('.item')].indexOf(target));
             target.parentElement.remove();
-            itemQty.textContent = arrayOfTodos.length;
+            itemQty.textContent = arrayOfTodos.length; // updating counter
         }
     });
     
@@ -184,6 +183,7 @@ window.addEventListener('DOMContentLoaded', () => {
     itemsClear.addEventListener('click', event => {
         itemListParent.innerHTML = '';
         arrayOfTodos.splice(0, arrayOfTodos.length);
+        itemQty.textContent = arrayOfTodos.length; // updating counter
         localStorage.clear();
     });
 });
