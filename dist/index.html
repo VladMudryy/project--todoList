@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header__content">
+                    <h1>TODO</h1>
+                    <!-- <img class="changer" src="assets/img/icons/switcher_white.svg" alt="switcher">  -->
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="container main-container">
+                <div class="main__content">
+                    <section class="card add-item">
+                        <label>
+                            <button>
+                                <img class="add-submit" src="assets/img/icons/plus_white.svg" alt="add-card">
+                            </button>
+                            <input class="add-item__input" type="text" id="card-add" name="new-card" placeholder="Create new todo..">
+                        </label>
+                        
+                    </section>
+                    <section class="card items">
+                        <div class="items__content">
+                            <div class="items__list"></div>
+                            <div class="items__footer">
+                                <h3 class="items__qty"><span>0</span>items</h3>
+                                <ul>
+                                    <li><a id="all" href="#">All</a></li>
+                                    <li><a id="active" href="#">Active</a></li>
+                                    <li><a id="completed" href="#">Completed</a></li>
+                                </ul>
+                                <h3><a class="items__clear" href="#">Clear all</a></h3>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <h3 class="footer__quote">Opportunities don't happen, you create them.</h3>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
