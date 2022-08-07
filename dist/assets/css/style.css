@@ -53,6 +53,7 @@ main {
 @media (max-width: 452px) {
     .container {
         width: 330px;
+        overflow: auto;
     }
 }
 
